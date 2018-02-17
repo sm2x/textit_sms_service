@@ -37,9 +37,9 @@ class SMS_Template(models.TransientModel):
         number = self.to
         message = self.message
         message = message.replace(" ", "%20")
-        url = get_param('url', default='')
+        textit_url = get_param('textit_url', default='')
 
-        if url != '':
+        if textit_url != '':
 
             if not ',' in number:
                 _logger.info(">>>> Sendings sms to number : %s" %(number))
@@ -68,4 +68,4 @@ class SMS_Template(models.TransientModel):
             }
         data = '{"urns": ["tel:%s"],"text": "%s"}' %(number,message)
         _logger.info('Sending message : '+message+' on Number : '+number)
-        rec = requests.post(url, headers=headers, data=data)
+        rec = requests.post(textit_url, headers=headers, data=data)

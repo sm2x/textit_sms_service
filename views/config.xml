@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <xpath expr="//group[@name='google']" position="before">
                 <group string="SMS Settings" name="sms_setting">
-                    <field name="url" />
+                    <field name="textit_url" />
                 </group>
             </xpath>
         </field>

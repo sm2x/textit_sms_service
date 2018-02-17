@@ -10,8 +10,8 @@
     key2="client_action_multi"
   /> 
 
-  <record model="ir.ui.view" id="glare_sms_service.sms_temp">
-    <field name="name">glare_sms_service sms_temp</field>
+  <record model="ir.ui.view" id="textit_sms_service.sms_temp">
+    <field name="name">textit_sms_service sms_temp</field>
     <field name="model">sms.templates</field>
     <field name="arch" type="xml">
       <form create="0">
