@@ -20,6 +20,7 @@
     'version': '0.1',
     'depends': ['base','mail','contacts'],
     'data': [
+        'security/sms_activation_group.xml',
         'views/config.xml',
         'views/sms_template.xml',
     ],

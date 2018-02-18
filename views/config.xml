@@ -7,8 +7,14 @@
         <field name="inherit_id" ref="base_setup.view_general_configuration"/>
         <field name="arch" type="xml">
             <xpath expr="//group[@name='google']" position="before">
-                <group string="SMS Settings" name="sms_setting">
-                    <field name="textit_url" />
+                <group string="Textit SMS Settings" name="sms_setting">
+
+                    <field name="group_sms_activation" widget="radio"/>
+
+                    <field 
+                        name="textit_url" 
+                        attrs="{'invisible': [('group_sms_activation', '!=', 1)]}"
+                    />
                 </group>
             </xpath>
         </field>

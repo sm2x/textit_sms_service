@@ -7,6 +7,7 @@
     res_model="sms.templates"
     view_mode="form"
     target="new"
+    group="textit_sms_service.group_sms_form"
     key2="client_action_multi"
   /> 
 

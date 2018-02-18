@@ -61,11 +61,26 @@ class SMS_Template(models.TransientModel):
         else:
             raise ValidationError(_('You should have to assign textit api first at General Settings'))
 
-    def send_sms(number,message):
-        headers = {
-                'Authorization': 'Token 45855a8fdf2280817fd1a0649f57169271c8d621',
-                'Content-Type': 'application/json'
-            }
-        data = '{"urns": ["tel:%s"],"text": "%s"}' %(number,message)
-        _logger.info('Sending message : '+message+' on Number : '+number)
-        rec = requests.post(textit_url, headers=headers, data=data)
+    def send_sms(self,number,message):
+
+        get_param = self.env['ir.config_parameter'].get_param
+
+        textit_url = get_param('textit_url', default='')
+
+        if textit_url != '':
+
+            headers = {
+                    'Authorization': 'Token 45855a8fdf2280817fd1a0649f57169271c8d621',
+                    'Content-Type': 'application/json'
+                }
+
+            data = '{"urns": ["tel:%s"],"text": "%s"}' %(number,message)
+
+            _logger.info('Sending message : '+message+' on Number : '+number)
+            
+            try:
+                rec = requests.post(textit_url, headers=headers, data=data)
+            except Exception as e:
+                raise e
+        else:
+            return True
